@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      @for (movie of movies_list; track movie.name) {
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-header">
+            {{ movie.name }}
+          </div>
+          <div class="card-body">
+            {{ movie.year }}
+          </div>
+          <div class="card-footer">
+            {{ movie.rating }}
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
