@@ -4,16 +4,42 @@
       @for (movie of movies_list; track movie.name) {
         <div class="card text-white bg-primary mb-3">
           <div class="card-header">
-            {{ movie.name }}
+            {{ movie.tconst }}
+            {{ movie.titleType }}
+            {{ movie.primaryTitle }}
           </div>
           <div class="card-body">
-            {{ movie.year }}
+            {{ movie.originalTitle }}
+            {{ movie.isAdult }}
+            {{ movie.startYear }}
+            {{ movie.endYear }}
+            {{ movie.runtimeMinutes }}
+            {{ movie.genres }}
           </div>
           <div class="card-footer">
-            {{ movie.rating }}
+            {{ movie.reviews }}
           </div>
         </div>
       }
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <button class="btn btn-primary"
+              (click)="previousPage()">
+        Previous
+      </button>
+    </div>
+    <div class="col-sm-4 text-center align-self-center">
+      Showing page {{ this.page }}
+      of {{ this.dataService.getLastPageNumber() }}
+    </div>
+    <div class="col-sm-4-text-end">
+      <button class="btn btn-primary"
+              (click)="nextPage()">
+        Next
+      </button>
     </div>
   </div>
 </div>
