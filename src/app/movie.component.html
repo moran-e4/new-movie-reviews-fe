@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      @for (movie of movies_list; track movie.name) {
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-header">
+            {{ movie.tconst }}
+            {{ movie.titleType }}
+            {{ movie.primaryTitle }}
+          </div>
+          <div class="card-body">
+            {{ movie.originalTitle }}
+            {{ movie.isAdult }}
+            {{ movie.startYear }}
+            {{ movie.endYear }}
+            {{ movie.runtimeMinutes }}
+            {{ movie.genres }}
+          </div>
+          <div class="card-footer">
+            {{ movie.reviews }}
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
+

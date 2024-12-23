@@ -13,4 +13,14 @@ export class DataService {
   getLastPageNumber() {
     return Math.ceil(jsonData.length / this.pageSize);
   }
+
+  getMovie(id: any) {
+    let dataToReturn: any[] = [];
+    jsonData.forEach( function(movie) {
+      if (movie['tconst'] == id) {
+        dataToReturn.push(movie);
+      }
+    })
+    return dataToReturn;
+  }
 }
