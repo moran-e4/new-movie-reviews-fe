@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'movies',
-  providers : [DataService],
+  providers: [DataService],
   templateUrl: './movies.component.html',
   standalone: true,
+  imports: [
+    RouterLink
+  ],
   styleUrl: './movies.component.css'
 })
 export class MoviesComponent {
