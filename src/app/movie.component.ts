@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { RouterOutlet, ActivatedRoute } from '@angular/router';
 import { DataService } from './data.service';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'movie',
-  providers : [DataService],
+  providers: [DataService],
   templateUrl: './movie.component.html',
   standalone: true,
-  styleUrl: './movie.component.css'
+  styleUrl: './movie.component.css',
+  imports: [
+    RouterOutlet,
+    CommonModule
+  ],
 })
 export class MovieComponent {
 

@@ -9,7 +9,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 3
   },
   {
     "tconst":"tt0000001",
@@ -21,7 +22,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 7.5
   },
   {
     "tconst":"tt0000002",
@@ -33,7 +35,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 7.5
   },
   {
     "tconst":"tt0000003",
@@ -45,7 +48,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 7.5
   },
   {
     "tconst":"tt0000004",
@@ -57,7 +61,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 7.5
   },
   {
     "tconst":"tt0000005",
@@ -69,7 +74,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 7.5
   },
   {
     "tconst":"tt0000006",
@@ -81,7 +87,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 7.5
   },
   {
     "tconst":"tt0000007",
@@ -93,7 +100,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 7.5
   },
   {
     "tconst":"tt0000008",
@@ -105,7 +113,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 7.5
   },
   {
     "tconst":"tt0000009",
@@ -117,7 +126,8 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[]
+    "reviews":[],
+    "averageRating": 7.5
   }
 ]
 
