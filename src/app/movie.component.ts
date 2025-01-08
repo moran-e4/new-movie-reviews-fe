@@ -24,6 +24,7 @@ export class MovieComponent {
   movies_lng: any;
   map_options: google.maps.MapOptions = {};
   map_locations: any[] = [];
+  loremIpsum: any;
 
   constructor( public dataService: DataService, private route: ActivatedRoute ) {
   }
@@ -46,6 +47,11 @@ export class MovieComponent {
         lng: this.movies_lng,
       },
       zoom: 13
-    }
+    };
+
+    this.dataService.getLoremIpsum(1)
+      .subscribe( (response: any) => {
+        this.loremIpsum = response.text.slice(0, 400);
+      })
   }
 }
