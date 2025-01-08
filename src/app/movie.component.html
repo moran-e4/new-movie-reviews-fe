@@ -18,14 +18,25 @@
           </div>
           <div class="card-footer">
             {{ movie.reviews }}
-            <span *ngFor="let star of [].constructor(movie.averageRating)">
-              <img src="../public/images/png.png" alt="png"
-                   style="width:30px; height:30px">
-            </span>
+            {{ movie.averageRating }}
+<!--            <span *ngFor="let star of [].constructor(movie.averageRating)">-->
+<!--              <img src="../public/images/png.png" alt="png"-->
+<!--                   style="width:30px; height:30px">-->
+<!--            </span>-->
           </div>
         </div>
       }
     </div>
   </div>
 </div>
+
+<google-map height="400px" width="400px" [options]="map_options">
+  @for (location of map_locations; track location) {
+    <map-advanced-marker
+      #markerElem="mapAdvancedMarker"
+      [position]="{lat: location.lat, lng: location.lng}">
+    </map-advanced-marker>
+  }
+
+</google-map>
 

@@ -10,7 +10,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 3
+    "averageRating": 3,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   },
   {
     "tconst":"tt0000001",
@@ -23,7 +26,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 7.5
+    "averageRating": 7.5,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   },
   {
     "tconst":"tt0000002",
@@ -36,7 +42,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 7.5
+    "averageRating": 7.5,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   },
   {
     "tconst":"tt0000003",
@@ -49,7 +58,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 7.5
+    "averageRating": 7.5,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   },
   {
     "tconst":"tt0000004",
@@ -62,7 +74,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 7.5
+    "averageRating": 7.5,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   },
   {
     "tconst":"tt0000005",
@@ -75,7 +90,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 7.5
+    "averageRating": 7.5,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   },
   {
     "tconst":"tt0000006",
@@ -88,7 +106,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 7.5
+    "averageRating": 7.5,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   },
   {
     "tconst":"tt0000007",
@@ -101,7 +122,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 7.5
+    "averageRating": 7.5,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   },
   {
     "tconst":"tt0000008",
@@ -114,7 +138,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 7.5
+    "averageRating": 7.5,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   },
   {
     "tconst":"tt0000009",
@@ -127,7 +154,10 @@
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
     "reviews":[],
-    "averageRating": 7.5
+    "averageRating": 7.5,
+    "location": {
+      "coordinates": [40.7128, -74.0060]
+    }
   }
 ]
 
