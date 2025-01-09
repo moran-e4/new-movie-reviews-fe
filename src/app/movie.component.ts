@@ -25,6 +25,12 @@ export class MovieComponent {
   map_options: google.maps.MapOptions = {};
   map_locations: any[] = [];
   loremIpsum: any;
+  temperature: any;
+  weather: any;
+  weatherIcon: any;
+  weatherIconUrl: any;
+  tempColour: any;
+
 
   constructor( public dataService: DataService, private route: ActivatedRoute ) {
   }
@@ -53,5 +59,15 @@ export class MovieComponent {
       .subscribe( (response: any) => {
         this.loremIpsum = response.text.slice(0, 400);
       })
+
+    this.dataService.getCurrentWeather(this.movies_lat, this.movies_lng)
+      .subscribe( (response: any) => {
+        let weatherResponse = response['weather'][0]['description'];
+        this.temperature = Math.round(response['main']['temp']);
+        this.weather = weatherResponse[0].toUpperCase() + weatherResponse.slice(1);
+        this.weatherIcon = response['weather'][0]['icon'];
+        this.weatherIconUrl = 'http://openweathermap.org/img/wn/' + this.weatherIcon + '@4x.png';
+        this.tempColour = this.dataService.getTemperatureColour(this.temperature);
+      });
   }
 }

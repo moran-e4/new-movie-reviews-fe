@@ -39,4 +39,19 @@ export class DataService {
     );
   }
 
+  getCurrentWeather(lat: number, lon: number) {
+    let API_key = 'c92f9bbf1eea3a3d86ab409e6d9a2e15\n';
+    return this.http.get<any>(
+      'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&appid=' + API_key);
+  }
+
+  getTemperatureColour (temp: number) {
+    if (temp< 5) return '#0000ff';
+    else if (temp <= 12) return '#00ff00';
+    else if (temp
+      < 17) return '#ffff00';
+    else if (temp < 25) return '#ff7f00';
+    else return '#ff0000';
+  }
+
 }
