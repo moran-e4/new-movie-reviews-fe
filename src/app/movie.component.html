@@ -4,28 +4,21 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="display-1">
-          {{ movie.tconst }}
-          {{ movie.titleType }}
           {{ movie.primaryTitle }}
         </div>
-        {{ movie.reviews }}
-        {{ movie.averageRating }}
-        <!--            <span *ngFor="let star of [].constructor(movie.averageRating)">-->
-        <!--              <img src="../public/images/png.png" alt="png"-->
-        <!--                   style="width:30px; height:30px">-->
-        <!--            </span>-->
+        Rating: {{ ratings[movie.tconst] }}/10
       </div>
     </div>
-
     <div class="row">
       <div class="col-sm-6">
         <div class="card-body">
-          {{ movie.originalTitle }}
-          {{ movie.isAdult }}
-          {{ movie.startYear }}
-          {{ movie.endYear }}
-          {{ movie.runtimeMinutes }}
-          {{ movie.genres }}
+          Release Year: {{ movie.startYear }}
+        </div>
+        <div class="card-body">
+          Runtime: {{ movie.runtimeMinutes }} mins
+        </div>
+        <div class="card-body">
+          Genres: {{ movie.genres }}
         </div>
       </div>
     </div>
@@ -37,38 +30,9 @@
         </h1>
         {{ loremIpsum }}
         <div>
-          <h1>
-            Weather
-          </h1>
-          Description: {{ weather }} <br>
-          Temperature: {{ temperature }}
 
-          <svg height="100" width="100">
-            <g>
-              <circle [style.fill]="tempColour"
-                      cx="50" cy="50" r="50">
-              </circle>
-              <text x="50%" y="50%" font-size="1.3em"
-                    text-anchor="middle" stroke="#000" stroke-width="1px" dy=" .3em">
-                {{ temperature}}
-                <tspan dy="-10">o</tspan>
-                <tspan dy="10">C</tspan>
-              </text>
-            </g>
-          </svg>
         </div>
       </div>
-
-      <div class="col-sm-12">
-          <google-map height="400px" width="400px" [options]="map_options">
-            @for (location of map_locations; track location) {
-              <map-advanced-marker
-                #markerElem="mapAdvancedMarker"
-                [position]="{lat: location.lat, lng: location.lng}">
-              </map-advanced-marker>
-            }
-          </google-map>
-        </div>
 
       <div class="row" style="margin-top: 70px">
         <div class="col-sm-12">

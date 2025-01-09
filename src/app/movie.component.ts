@@ -36,6 +36,8 @@ export class MovieComponent {
   tempColour: any;
   reviewForm: any;
   review_list: any;
+  ratings: { [key: string]: number } = {};
+
 
 
   constructor( public dataService: DataService,
@@ -53,6 +55,8 @@ export class MovieComponent {
     this.webService.getMovie(this.route.snapshot.paramMap.get('_id'))
       .subscribe((response) => {
         this.movies_list = [response];
+        this.loadRatings();
+
 
         this.movies_lat = this.movies_list[0].location.coordinates[0];
         this.movies_lng = this.movies_list[0].location.coordinates[1];
@@ -74,7 +78,7 @@ export class MovieComponent {
         this.dataService.getLoremIpsum(1)
           .subscribe( (response: any) => {
             this.loremIpsum = response.text.slice(0, 400);
-          })
+          });
 
         this.dataService.getCurrentWeather(this.movies_lat, this.movies_lng)
           .subscribe( (response: any) => {
@@ -90,6 +94,14 @@ export class MovieComponent {
       .subscribe( (response) => {
         this.review_list = response;
       });
+  }
+
+  loadRatings(): void {
+    this.movies_list.forEach((movie: any) => {
+      this.webService.getRatings(movie.tconst).subscribe((rating) => {
+        this.ratings[movie.tconst] = rating.averageRating;
+      })
+    });
   }
 
   onSubmit() {
