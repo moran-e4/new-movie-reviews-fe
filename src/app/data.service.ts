@@ -75,6 +75,19 @@ export class DataService {
         }
       })
     })
-
   }
+
+  postReview(id: any, review: any) {
+    let newReview = {
+      'username': review.username,
+      'comment': review.comment,
+      'rating': review.rating
+    };
+    jsonData.forEach( function(movie) {
+      if (movie['tconst'] == id) {
+        movie.reviews.push(newReview);
+      }
+    })
+  }
+
 }

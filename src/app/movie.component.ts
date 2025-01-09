@@ -82,7 +82,10 @@ export class MovieComponent {
   }
 
   onSubmit() {
-    console.log(this.reviewForm.valid);
+    this.dataService.postReview(
+      this.route.snapshot.paramMap.get('tconst'),
+      this.reviewForm.value);
+    this.reviewForm.reset()
   }
 
   isInvalid(control: any) {
