@@ -3,7 +3,8 @@ import { RouterOutlet, ActivatedRoute } from '@angular/router';
 import { DataService } from './data.service';
 import { CommonModule } from '@angular/common';
 import { GoogleMapsModule} from '@angular/google-maps';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'movie',
@@ -15,6 +16,7 @@ import { GoogleMapsModule} from '@angular/google-maps';
     RouterOutlet,
     CommonModule,
     GoogleMapsModule,
+    ReactiveFormsModule
   ],
 })
 export class MovieComponent {
@@ -30,12 +32,19 @@ export class MovieComponent {
   weatherIcon: any;
   weatherIconUrl: any;
   tempColour: any;
+  reviewForm: any;
 
 
-  constructor( public dataService: DataService, private route: ActivatedRoute ) {
-  }
+  constructor( public dataService: DataService,
+               private route: ActivatedRoute,
+               private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.reviewForm = this.formBuilder.group({
+      username: "",
+      comment: "",
+      rating: 5,
+    })
     this.movies_list = this.dataService.getMovie(
       this.route.snapshot.paramMap.get('tconst'));
     console.log(this.movies_list.reviews);
@@ -70,5 +79,9 @@ export class MovieComponent {
         this.weatherIconUrl = 'http://openweathermap.org/img/wn/' + this.weatherIcon + '@4x.png';
         this.tempColour = this.dataService.getTemperatureColour(this.temperature);
       });
+  }
+
+  onSubmit() {
+    console.log(this.reviewForm.value);
   }
 }
