@@ -11,4 +11,9 @@ export class WebService {
     return this.http.get<any>(
       'http://127.0.0.1:5000/api/v1.0/movies?pn=' + page + '&ps=' + this.pageSize);
   }
+
+  getMovie(id: any) {
+    return this.http.get<any>(
+      'http://127.0.0.1:5000/api/v1.0/movies/' + id);
+  }
 }

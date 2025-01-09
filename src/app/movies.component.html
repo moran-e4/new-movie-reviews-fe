@@ -4,7 +4,7 @@
       @for (movie of movies_list; track movie.name) {
         <div class="card text-white bg-primary mb-3"
         style="cursor: pointer"
-        [routerLink]="['/movies', movie.tconst]">
+        [routerLink]="['/movies', movie._id]">
           <div class="card-header">
             {{ movie.tconst }}
             {{ movie.titleType }}

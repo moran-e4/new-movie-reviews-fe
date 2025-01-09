@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: MoviesComponent
   },
   {
-    path: 'movies/:tconst',
+    path: 'movies/:_id',
     component: MovieComponent
   }
 ];

@@ -6,10 +6,11 @@ import { GoogleMapsModule} from '@angular/google-maps';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
+import { WebService} from './web.service';
 
 @Component({
   selector: 'movie',
-  providers: [DataService],
+  providers: [DataService, WebService],
   templateUrl: './movie.component.html',
   standalone: true,
   styleUrl: './movie.component.css',
@@ -39,7 +40,8 @@ export class MovieComponent {
   constructor( public dataService: DataService,
                private route: ActivatedRoute,
                private formBuilder: FormBuilder,
-               public authService: AuthService) {}
+               public authService: AuthService,
+               private webService: WebService) {}
 
   ngOnInit() {
     this.reviewForm = this.formBuilder.group({
@@ -47,45 +49,47 @@ export class MovieComponent {
       comment:  ["", Validators.required],
       rating:  [5, Validators.required],
     })
-    this.movies_list = this.dataService.getMovie(
-      this.route.snapshot.paramMap.get('tconst'));
-    console.log(this.movies_list.reviews);
-    this.movies_lat = this.movies_list[0].location.coordinates[0];
-    this.movies_lng = this.movies_list[0].location.coordinates[1];
+    this.webService.getMovie(this.route.snapshot.paramMap.get('_id'))
+      .subscribe((response) => {
+        this.movies_list = [response];
 
-    this.map_locations.push({
-      lat: this.movies_lat,
-      lng: this.movies_lng,
-    });
+        this.movies_lat = this.movies_list[0].location.coordinates[0];
+        this.movies_lng = this.movies_list[0].location.coordinates[1];
 
-    this.map_options = {
-      mapId: "DEMOMAP",
-      center: {
-        lat: this.movies_lat,
-        lng: this.movies_lng,
-      },
-      zoom: 13
-    };
+        this.map_locations.push({
+          lat: this.movies_lat,
+          lng: this.movies_lng,
+        });
 
-    this.dataService.getLoremIpsum(1)
-      .subscribe( (response: any) => {
-        this.loremIpsum = response.text.slice(0, 400);
-      })
+        this.map_options = {
+          mapId: "DEMOMAP",
+          center: {
+            lat: this.movies_lat,
+            lng: this.movies_lng,
+          },
+          zoom: 13
+        };
 
-    this.dataService.getCurrentWeather(this.movies_lat, this.movies_lng)
-      .subscribe( (response: any) => {
-        let weatherResponse = response['weather'][0]['description'];
-        this.temperature = Math.round(response['main']['temp']);
-        this.weather = weatherResponse[0].toUpperCase() + weatherResponse.slice(1);
-        this.weatherIcon = response['weather'][0]['icon'];
-        this.weatherIconUrl = 'http://openweathermap.org/img/wn/' + this.weatherIcon + '@4x.png';
-        this.tempColour = this.dataService.getTemperatureColour(this.temperature);
+        this.dataService.getLoremIpsum(1)
+          .subscribe( (response: any) => {
+            this.loremIpsum = response.text.slice(0, 400);
+          })
+
+        this.dataService.getCurrentWeather(this.movies_lat, this.movies_lng)
+          .subscribe( (response: any) => {
+            let weatherResponse = response['weather'][0]['description'];
+            this.temperature = Math.round(response['main']['temp']);
+            this.weather = weatherResponse[0].toUpperCase() + weatherResponse.slice(1);
+            this.weatherIcon = response['weather'][0]['icon'];
+            this.weatherIconUrl = 'http://openweathermap.org/img/wn/' + this.weatherIcon + '@4x.png';
+            this.tempColour = this.dataService.getTemperatureColour(this.temperature);
+          });
       });
   }
 
   onSubmit() {
     this.dataService.postReview(
-      this.route.snapshot.paramMap.get('tconst'),
+      this.route.snapshot.paramMap.get('_id'),
       this.reviewForm.value);
     this.reviewForm.reset()
   }

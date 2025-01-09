@@ -25,9 +25,7 @@ export class MoviesComponent {
     if (sessionStorage['page']) {
       this.page = Number(sessionStorage['page']);
     }
-    // this.movies_list = this.dataService.getMovies(this.page);
     this.webService.getMovies(this.page).subscribe((response) => {
-      // console.log(response)
       this.movies_list = response;
     })
   }
