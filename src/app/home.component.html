@@ -2,3 +2,9 @@
   Movie Reviews
 </h1>
 
+<ag-grid-angular
+  class="ag-theme-quartz"
+  style="height: 500px"
+  [rowData] = "data"
+  [columnDefs] = "headings"
+  [modules]="[ClientSideRowModelModule]"/>
