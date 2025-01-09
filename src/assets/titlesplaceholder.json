@@ -9,7 +9,13 @@
     "endYear":"\\N",
     "runtimeMinutes":"12",
     "genres":"Animation,Short",
-    "reviews":[],
+    "reviews":[
+      {
+        "username": "John Doe",
+        "comment": "This is a great movie!",
+        "rating": 4
+      }
+    ],
     "averageRating": 3,
     "location": {
       "coordinates": [40.7128, -74.0060]

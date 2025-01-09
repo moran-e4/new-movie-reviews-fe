@@ -69,6 +69,25 @@
             }
           </google-map>
         </div>
+
+      <div class="row" style="margin-top: 70px">
+        <div class="col-sm-12">
+          @for (review of movie.reviews; track review) {
+            <div class="card bg-light mb-3">
+              <div class ="card-header">
+                {{ review.username }}
+              </div>
+              <div class="card-body">
+                {{ review.comment }}
+              </div>
+              <div class="card-footer">
+                {{ review.rating }}
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
     </div>
   }
 </div>

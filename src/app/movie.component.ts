@@ -38,6 +38,7 @@ export class MovieComponent {
   ngOnInit() {
     this.movies_list = this.dataService.getMovie(
       this.route.snapshot.paramMap.get('tconst'));
+    console.log(this.movies_list.reviews);
     this.movies_lat = this.movies_list[0].location.coordinates[0];
     this.movies_lng = this.movies_list[0].location.coordinates[1];
 
