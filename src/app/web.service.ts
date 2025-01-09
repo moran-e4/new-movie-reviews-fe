@@ -30,4 +30,9 @@ export class WebService {
   return this.http.post<any>(
     'http://127.0.0.1:5000/api/v1.0/movies/' + id + '/reviews', postData);
   }
+
+  getRatings(tconst: any) {
+    return this.http.get<any>(
+      'http://127.0.0.1:5000/api/v1.0/ratings/tconst/' + tconst);
+  }
 }

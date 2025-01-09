@@ -6,21 +6,19 @@
         style="cursor: pointer"
         [routerLink]="['/movies', movie._id]">
           <div class="card-header">
-            {{ movie.tconst }}
-            {{ movie.titleType }}
             {{ movie.primaryTitle }}
           </div>
           <div class="card-body">
-            {{ movie.originalTitle }}
-            {{ movie.isAdult }}
-            {{ movie.startYear }}
-            {{ movie.endYear }}
-            {{ movie.runtimeMinutes }}
-            {{ movie.genres }}
+            Year: {{ movie.startYear }}
+            <div>
+              Runtime: {{ movie.runtimeMinutes }} mins
+            </div>
           </div>
           <div class="card-footer">
-            {{ movie.reviews }}
-            {{ movie.averageRating }}
+            Genres: {{ movie.genres }}
+            <div>
+              Rating: {{ ratings[movie.tconst] }}/10
+            </div>
           </div>
         </div>
       }

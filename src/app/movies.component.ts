@@ -17,9 +17,10 @@ export class MoviesComponent {
 
   movies_list: any;
   page: number = 1;
+  ratings: { [key: string]: number } = {};
 
   constructor(public dataService: DataService,
-              private webService: WebService) {}
+              public webService: WebService) {}
 
   ngOnInit() {
     if (sessionStorage['page']) {
@@ -27,7 +28,16 @@ export class MoviesComponent {
     }
     this.webService.getMovies(this.page).subscribe((response) => {
       this.movies_list = response;
+      this.loadRatings();
     })
+  }
+
+  loadRatings(): void {
+    this.movies_list.forEach((movie: any) => {
+      this.webService.getRatings(movie.tconst).subscribe((rating) => {
+        this.ratings[movie.tconst] = rating.averageRating;
+      })
+    });
   }
 
   previousPage() {
