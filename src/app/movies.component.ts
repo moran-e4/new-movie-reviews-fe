@@ -46,6 +46,7 @@ export class MoviesComponent {
       sessionStorage['page'] = this.page;
       this.webService.getMovies(this.page).subscribe((response) => {
         this.movies_list = response;
+        this.loadRatings();
       })
     }
   }
@@ -55,6 +56,8 @@ export class MoviesComponent {
       sessionStorage['page'] = this.page;
       this.webService.getMovies(this.page).subscribe((response) => {
         this.movies_list = response;
-      })        }
+        this.loadRatings();
+      })
+    }
   }
 }

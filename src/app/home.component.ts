@@ -45,7 +45,6 @@ export class HomeComponent {
         this.ratings[movie.tconst] = rating.averageRating;
         movie.ratings = rating.averageRating; // This is where the push happens
 
-        console.log(movie)
       })
     });
   }

@@ -19,7 +19,7 @@ export class DataService {
   }
 
   getLastPageNumber() {
-    return Math.ceil(jsonData.length / this.pageSize);
+    return 100;
   }
 
   getMovie(id: any) {
