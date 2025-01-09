@@ -35,6 +35,7 @@ export class MovieComponent {
   weatherIconUrl: any;
   tempColour: any;
   reviewForm: any;
+  review_list: any;
 
 
   constructor( public dataService: DataService,
@@ -85,13 +86,24 @@ export class MovieComponent {
             this.tempColour = this.dataService.getTemperatureColour(this.temperature);
           });
       });
+    this.webService.getReviews(this.route.snapshot.paramMap.get('_id'))
+      .subscribe( (response) => {
+        this.review_list = response;
+      });
   }
 
   onSubmit() {
-    this.dataService.postReview(
+    this.webService.postReview(
       this.route.snapshot.paramMap.get('_id'),
-      this.reviewForm.value);
-    this.reviewForm.reset()
+      this.reviewForm.value)
+      .subscribe( (response) => {
+        this.reviewForm.reset()
+        this.webService.getReviews(this.route.snapshot.paramMap.get('_id'))
+          .subscribe( (response) => {
+            this.review_list = response;
+          });
+      });
+
   }
 
   isInvalid(control: any) {
