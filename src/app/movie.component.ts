@@ -4,7 +4,7 @@ import { DataService } from './data.service';
 import { CommonModule } from '@angular/common';
 import { GoogleMapsModule} from '@angular/google-maps';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'movie',
@@ -41,9 +41,9 @@ export class MovieComponent {
 
   ngOnInit() {
     this.reviewForm = this.formBuilder.group({
-      username: "",
-      comment: "",
-      rating: 5,
+      username: ["", Validators.required],
+      comment:  ["", Validators.required],
+      rating:  [5, Validators.required],
     })
     this.movies_list = this.dataService.getMovie(
       this.route.snapshot.paramMap.get('tconst'));
@@ -82,6 +82,22 @@ export class MovieComponent {
   }
 
   onSubmit() {
-    console.log(this.reviewForm.value);
+    console.log(this.reviewForm.valid);
+  }
+
+  isInvalid(control: any) {
+    return this.reviewForm.controls[control].invalid &&
+           this.reviewForm.controls[control].touched;
+  }
+
+  isUntouched() {
+    return this.reviewForm.controls.username.pristine ||
+           this.reviewForm.controls.comment.pristine;
+  }
+
+  isIncomplete() {
+    return this.isInvalid('username') ||
+      this.isInvalid('comment') ||
+      this.isUntouched();
   }
 }
