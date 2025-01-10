@@ -17,13 +17,13 @@
   content: "";
   display: table;
   clear: both;
-  gap: 20px; /* Add gap between cards */
+  gap: 20px;
 
 
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 5px;
   text-align: center;
   background-color: #f1f1f1;
@@ -40,4 +40,11 @@
 
 .card-footer {
   font-size: 15px;
+}
+
+.limitSize {
+  width: 370px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

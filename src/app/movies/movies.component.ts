@@ -17,6 +17,7 @@ import { WebService } from '../services/web.service';
   ],
   styleUrl: './movies.component.css'
 })
+
 export class MoviesComponent {
 
   /**

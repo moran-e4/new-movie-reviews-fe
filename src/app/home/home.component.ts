@@ -64,8 +64,7 @@ export class HomeComponent {
     this.data.forEach((movie: any) => {
       this.webService.getRatings(movie.tconst).subscribe((rating) => {
         this.ratings[movie.tconst] = rating.averageRating;
-        movie.ratings = rating.averageRating; // This is where the push happens
-
+        movie.ratings = rating.averageRating
       })
     });
   }
