@@ -89,11 +89,19 @@ export class WebService {
       'http://127.0.0.1:5000/api/v1.0/movies/genre/' + genre);
   }
 
+  /**
+   * Search for movies from the movie API database
+   * @param search Returns movies by partial title search
+   * */
   getSearch(search: any) {
     return this.http.get<any>(
       'http://127.0.0.1:5000/api/v1.0/movies/search/' + search)
   }
 
+  /**
+   * Search for movies from the movie API database
+   * @param search Returns movies by partial name search
+   * */
   getNameSearch(search: any) {
     return this.http.get<any>(
       'http://127.0.0.1:5000/api/v1.0/names/search/' + search + '/movies')
