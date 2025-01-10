@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { DataService } from './data.service';
+import { DataService } from '../services/data.service';
 import { RouterLink } from '@angular/router';
-import { WebService } from './web.service';
+import { WebService } from '../services/web.service';
 
 @Component({
   selector: 'movies',

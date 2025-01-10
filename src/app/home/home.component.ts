@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import { WebService} from './web.service';
+import { WebService} from '../services/web.service';
 import { AgGridAngular} from 'ag-grid-angular';
 import { ColDef } from 'ag-grid-community';
 import { ClientSideRowModelModule } from 'ag-grid-community';

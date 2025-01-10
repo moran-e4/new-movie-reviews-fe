@@ -1,11 +1,11 @@
 
 import { Component } from '@angular/core';
 import {ActivatedRoute, RouterOutlet} from '@angular/router';
-import { DataService } from './data.service';
+import { DataService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
 import { GoogleMapsModule} from '@angular/google-maps';
 import { ReactiveFormsModule} from '@angular/forms';
-import { WebService} from './web.service';
+import { WebService} from '../services/web.service';
 import { RouterLink } from '@angular/router';
 
 

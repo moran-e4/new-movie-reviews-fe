@@ -1,4 +1,4 @@
-import jsonData from '../assets/titlesplaceholder.json';
+import jsonData from '../../assets/titlesplaceholder.json';
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

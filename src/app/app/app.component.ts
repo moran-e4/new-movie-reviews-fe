@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {NavComponent} from './nav.component';
-import { DataService } from './data.service';
+import {NavComponent} from '../navigation/nav.component';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-root',

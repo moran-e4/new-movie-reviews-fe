@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, ActivatedRoute } from '@angular/router';
-import { DataService } from './data.service';
+import { DataService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
 import { GoogleMapsModule} from '@angular/google-maps';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
-import { WebService} from './web.service';
+import { WebService} from '../services/web.service';
 
 @Component({
   selector: 'movie',
