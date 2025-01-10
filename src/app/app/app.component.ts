@@ -12,13 +12,9 @@ import { DataService } from '../services/data.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  // ngOnInit() {
-    // console.log(jsonData);
-  // }
 
-  constructor(private dataService: DataService) {}
+  constructor() {}
   ngOnInit() {
-    this.dataService.populateReview();
   }
 
 }

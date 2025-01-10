@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { RouterOutlet, ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
-import { GoogleMapsModule} from '@angular/google-maps';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
-import { WebService} from '../services/web.service';
+import { WebService } from '../services/web.service';
 
+/**
+ * Component to display movie details, reviews, and related information.
+ */
 @Component({
   selector: 'movie',
   providers: [DataService, WebService],
@@ -22,7 +25,6 @@ import { WebService} from '../services/web.service';
   ],
 })
 export class MovieComponent {
-
   movies_list: any;
   movies_lat: any;
   movies_lng: any;
@@ -38,96 +40,94 @@ export class MovieComponent {
   review_list: any;
   ratings: { [key: string]: number } = {};
 
+  /**
+   * Constructor to inject necessary services.
+   * @param dataService Service to fetch data.
+   * @param route Activated route to get route parameters.
+   * @param formBuilder Form builder to create reactive forms.
+   * @param authService Authentication service.
+   * @param webService Web service to fetch movie-related data.
+   */
+  constructor(
+    public dataService: DataService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    public authService: AuthService,
+    private webService: WebService
+  ) {}
 
-
-  constructor( public dataService: DataService,
-               private route: ActivatedRoute,
-               private formBuilder: FormBuilder,
-               public authService: AuthService,
-               private webService: WebService) {}
-
+  /**
+   * Initializes the component, fetches movie details, reviews, and other related data.
+   */
   ngOnInit() {
     this.reviewForm = this.formBuilder.group({
       username: ["", Validators.required],
-      comment:  ["", Validators.required],
-      rating:  [5, Validators.required],
-    })
+      comment: ["", Validators.required],
+      rating: [5, Validators.required],
+    });
+
     this.webService.getMovie(this.route.snapshot.paramMap.get('_id'))
       .subscribe((response) => {
         this.movies_list = [response];
         this.loadRatings();
-
-
-        this.movies_lat = this.movies_list[0].location.coordinates[0];
-        this.movies_lng = this.movies_list[0].location.coordinates[1];
-
-        this.map_locations.push({
-          lat: this.movies_lat,
-          lng: this.movies_lng,
-        });
-
-        this.map_options = {
-          mapId: "DEMOMAP",
-          center: {
-            lat: this.movies_lat,
-            lng: this.movies_lng,
-          },
-          zoom: 13
-        };
-
-        this.dataService.getLoremIpsum(1)
-          .subscribe( (response: any) => {
-            this.loremIpsum = response.text.slice(0, 400);
-          });
-
-        this.dataService.getCurrentWeather(this.movies_lat, this.movies_lng)
-          .subscribe( (response: any) => {
-            let weatherResponse = response['weather'][0]['description'];
-            this.temperature = Math.round(response['main']['temp']);
-            this.weather = weatherResponse[0].toUpperCase() + weatherResponse.slice(1);
-            this.weatherIcon = response['weather'][0]['icon'];
-            this.weatherIconUrl = 'http://openweathermap.org/img/wn/' + this.weatherIcon + '@4x.png';
-            this.tempColour = this.dataService.getTemperatureColour(this.temperature);
-          });
       });
+
     this.webService.getReviews(this.route.snapshot.paramMap.get('_id'))
-      .subscribe( (response) => {
+      .subscribe((response) => {
         this.review_list = response;
       });
   }
 
+  /**
+   * Loads ratings for the movies in the list.
+   */
   loadRatings(): void {
     this.movies_list.forEach((movie: any) => {
       this.webService.getRatings(movie.tconst).subscribe((rating) => {
         this.ratings[movie.tconst] = rating.averageRating;
-      })
+      });
     });
   }
 
+  /**
+   * Submits a new review and refreshes the review list.
+   */
   onSubmit() {
     this.webService.postReview(
       this.route.snapshot.paramMap.get('_id'),
-      this.reviewForm.value)
-      .subscribe( (response) => {
-        this.reviewForm.reset()
-        this.webService.getReviews(this.route.snapshot.paramMap.get('_id'))
-          .subscribe( (response) => {
-            this.review_list = response;
-          });
-      });
-
+      this.reviewForm.value
+    ).subscribe((response) => {
+      this.reviewForm.reset();
+      this.webService.getReviews(this.route.snapshot.paramMap.get('_id'))
+        .subscribe((response) => {
+          this.review_list = response;
+        });
+    });
   }
 
+  /**
+   * Checks if a form control is invalid and has been touched.
+   * @param control The form control name.
+   * @returns True if the control is invalid and touched, otherwise false.
+   */
   isInvalid(control: any) {
     return this.reviewForm.controls[control].invalid &&
-           this.reviewForm.controls[control].touched;
+      this.reviewForm.controls[control].touched;
   }
 
+  /**
+   * Checks if the form is untouched.
+   * @returns True if the form is untouched, otherwise false.
+   */
   isUntouched() {
     return this.reviewForm.controls.username.pristine ||
-           this.reviewForm.controls.comment.pristine;
+      this.reviewForm.controls.comment.pristine;
   }
 
+  /**
+   * Ensures form completion before submission.
+   * @returns True if the form is incomplete, otherwise false.
+   */
   isIncomplete() {
     return this.isInvalid('username') ||
       this.isInvalid('comment') ||
