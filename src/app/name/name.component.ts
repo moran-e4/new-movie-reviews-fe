@@ -28,7 +28,6 @@ export class NameSearchComponent {
     this.webService.getNameSearch(this.nameSearchForm.value.search)
       .subscribe((response) => {
         this.name_search_list = [response];
-        console.log(this.name_search_list);
       });
   }
 }

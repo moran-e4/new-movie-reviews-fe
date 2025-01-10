@@ -54,7 +54,6 @@ export class HomeComponent {
         (response) => {
           this.data = response;
           this.loadRatings();
-          console.log(response)
         });
   }
 

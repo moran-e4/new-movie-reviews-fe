@@ -31,7 +31,6 @@ export class SearchComponent {
     this.webService.getSearch(this.searchForm.value.search)
       .subscribe((response) => {
         this.search_list = [response];
-        console.log(this.search_list);
       });
   }
 }

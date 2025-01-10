@@ -29,7 +29,6 @@ export class TestMovieComponent {
    */
   public testGetGenre() {
     this.webService.getGenre("Comedy").subscribe((response) => {
-      console.log(response);
       if (response[0].genres == "Comedy")
         this.test_output.push("Genres fetched... PASS");
       else

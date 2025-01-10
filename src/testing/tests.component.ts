@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { TestWebServiceComponent } from './testWebService.component';
 import {TestGenreComponent} from './testGenre.component';
 import {TestMovieComponent} from './testMovie.component';
+import {TestSearchComponent} from './testSearch.component';
 /**
  * Component for running various tests.
  * It includes tests for web service, genre, and movie components.
@@ -12,7 +13,8 @@ import {TestMovieComponent} from './testMovie.component';
   imports: [
     TestWebServiceComponent,
     TestGenreComponent,
-    TestMovieComponent
+    TestMovieComponent,
+    TestSearchComponent
   ],
   standalone: true
 })
@@ -29,6 +31,10 @@ export class TestsComponent implements AfterViewInit {
    * ViewChild to access the testMovieComponent instance.
    */
   @ViewChild(TestMovieComponent) testMovieComponent!: TestMovieComponent;
+  /**
+   * ViewChild to access the testMovieComponent instance.
+   */
+  @ViewChild(TestSearchComponent) testSearchComponent!: TestSearchComponent;
 
   /**
    * Runs all the test methods.
@@ -42,5 +48,7 @@ export class TestsComponent implements AfterViewInit {
     this.testWebServiceComponent.testGetRatings();
     this.testGenreComponent.testGetGenre();
     this.testMovieComponent.testGetGenre();
+    this.testSearchComponent.testSearch();
+    this.testSearchComponent.testSearchName();
   }
 }

@@ -60,8 +60,6 @@ export class GenreComponent {
       .subscribe((response) => {
         this.genre_movie_list = response;
         this.loadRatings();
-        console.log(this.route.snapshot.paramMap.get('genreId'));
-        console.log(response)
   });
   }
 
