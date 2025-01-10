@@ -17,7 +17,7 @@ export class TestWebServiceComponent {
   constructor(private webService: WebService) {}
 
 
-  private testPagesOfMoviesAreDifferent() {
+  public testPagesOfMoviesAreDifferent() {
     this.webService.getMovies(1).subscribe((response) => {
       this.first_movies_list = response;
       this.webService.getMovies(2).subscribe((response) => {
@@ -30,7 +30,7 @@ export class TestWebServiceComponent {
     });
   }
 
-  private testGetAllMovies() {
+  public testGetAllMovies() {
     this.webService.getMovies(1).subscribe((response) => {
       if (Array.isArray(response) && response.length == 12)
         this.test_output.push("Page of movies fetched... PASS");
@@ -39,8 +39,7 @@ export class TestWebServiceComponent {
     });
   }
 
-
-  private testGetMovie() {
+  public testGetMovie() {
     this.webService.getMovie("6726a80c02db8da58786d6e2").subscribe((response) => {
       if (response.originalTitle == "Le clown et ses chiens")
         this.test_output.push("Movie fetched... PASS");
@@ -48,7 +47,8 @@ export class TestWebServiceComponent {
         this.test_output.push("Movie fetched... FAIL");
     });
   }
-  private testGetReviews() {
+
+  public testGetReviews() {
     this.webService.getReviews("6726a80c02db8da58786d6e2").subscribe((response) => {
       if (response[0]._id == "677f4db0f028c1d3625bce16")
         this.test_output.push("Test review response... PASS");
@@ -57,7 +57,7 @@ export class TestWebServiceComponent {
     });
   }
 
-  private testPostReview() {
+  public testPostReview() {
     let test_review = {
       username: "test",
       comment: "test",
@@ -76,7 +76,7 @@ export class TestWebServiceComponent {
     });
   }
 
-  private testGetRatings() {
+  public testGetRatings() {
     this.webService.getRatings("tt0000002").subscribe((response) => {
       if (response[0].rating == 1)
         this.test_output.push("Ratings fetched... PASS");
@@ -85,7 +85,7 @@ export class TestWebServiceComponent {
     });
   }
 
-  private testGetGenre() {
+  public testGetGenre() {
     this.webService.getGenre("Comedy").subscribe((response) => {
       console.log(response);
       if (response[0].genres == "Comedy")
@@ -95,14 +95,4 @@ export class TestWebServiceComponent {
     });
   }
 
-  ngOnInit() {
-    this.testPagesOfMoviesAreDifferent();
-    this.testGetAllMovies();
-    this.testGetMovie();
-    this.testPagesOfMoviesAreDifferent();
-    this.testGetReviews();
-    this.testPostReview();
-    this.testGetRatings();
-    this.testGetGenre();
-  }
 }
