@@ -5,6 +5,7 @@ import { MovieComponent } from '../movie/movie.component';
 import {GenresComponent} from '../genres/genres.component';
 import {GenreComponent} from '../genre/genre.component';
 import {TestsComponent} from '../../testing/tests.component';
+import {SearchComponent} from '../search/search.component';
 
 export const routes: Routes = [
   {
@@ -30,5 +31,9 @@ export const routes: Routes = [
   {
     path: 'test',
     component: TestsComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   }
 ];

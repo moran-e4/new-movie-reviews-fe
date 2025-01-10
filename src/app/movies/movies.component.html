@@ -3,8 +3,8 @@
     <div class="col-sm-12">
       @for (movie of movies_list; track movie.name) {
         <div class="card text-white bg-primary mb-3 column"
-        style="cursor: pointer"
-        [routerLink]="['/movies', movie._id]">
+             style="cursor: pointer"
+             [routerLink]="['/movies', movie._id]">
           <div class="card-header">
             {{ movie.primaryTitle }}
           </div>
