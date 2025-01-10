@@ -93,4 +93,9 @@ export class WebService {
     return this.http.get<any>(
       'http://127.0.0.1:5000/api/v1.0/movies/search/' + search)
   }
+
+  getNameSearch(search: any) {
+    return this.http.get<any>(
+      'http://127.0.0.1:5000/api/v1.0/names/search/' + search + '/movies')
+  }
 }

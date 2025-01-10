@@ -1,0 +1,38 @@
+<div class="container" style="margin-top: 70px">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Search for a Movie</h1>
+      <form [formGroup]="nameSearchForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="search">Search</label>
+          <input type="text" name="search" id="search"
+                 class="form-control" formControlName="search">
+        </div>
+        <button class="btn btn-primary"
+                type="submit" style="margin-top: 20px">
+          Submit
+        </button>
+      </form>
+      <div class="col-sm-12">
+        @for (movie of name_search_list[0]; track movie.name) {
+          <div class="card text-white bg-primary mb-3"
+               style="cursor: pointer"
+               [routerLink]="['/movies', movie._id]">
+            <div class="card-header">
+              {{ movie.primaryTitle }}
+            </div>
+            <div class="card-body">
+              Year: {{ movie.startYear }}
+              <div>
+                Runtime: {{ movie.runtimeMinutes }} mins
+              </div>
+            </div>
+            <div class="card-footer">
+              Genres: {{ movie.genres }}
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

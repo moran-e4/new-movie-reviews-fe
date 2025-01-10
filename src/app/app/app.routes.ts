@@ -6,6 +6,7 @@ import {GenresComponent} from '../genres/genres.component';
 import {GenreComponent} from '../genre/genre.component';
 import {TestsComponent} from '../../testing/tests.component';
 import {SearchComponent} from '../search/search.component';
+import {NameSearchComponent} from '../name/name.component';
 
 export const routes: Routes = [
   {
@@ -35,5 +36,9 @@ export const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path: 'nameSearch',
+    component: NameSearchComponent
   }
 ];
