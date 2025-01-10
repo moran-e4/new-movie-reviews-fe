@@ -3,6 +3,9 @@ import {RouterOutlet} from '@angular/router';
 import {NavComponent} from '../navigation/nav.component';
 import { DataService } from '../services/data.service';
 
+/**
+ * Root component of application.
+ */
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, NavComponent],
@@ -12,9 +15,5 @@ import { DataService } from '../services/data.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-
-  constructor() {}
-  ngOnInit() {
-  }
 
 }

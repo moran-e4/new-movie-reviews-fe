@@ -24,20 +24,35 @@ import { WebService } from '../services/web.service';
     ReactiveFormsModule,
   ],
 })
+
+/**
+ * MovieComponent is responsible for displaying movie details, reviews, and related information.
+ * It fetches data from various services and handles user interactions such as submitting reviews.
+ * @description movies_list: List of movies to display.
+ * @param reviewForm: Form to submit reviews.
+ * @type {any} review_list: List of reviews for the movie.
+ * @type {any} ratings: Ratings for the movies in the list.
+ */
 export class MovieComponent {
+  /**
+   * movies_list: List of movies to display.
+   * @type {Array<{ title: string, year: number, genre: string, rating: number }>}
+   */
   movies_list: any;
-  movies_lat: any;
-  movies_lng: any;
-  map_options: google.maps.MapOptions = {};
-  map_locations: any[] = [];
-  loremIpsum: any;
-  temperature: any;
-  weather: any;
-  weatherIcon: any;
-  weatherIconUrl: any;
-  tempColour: any;
+  /**
+   * reviewForm: Form to submit reviews.
+   * @type {any}
+   */
   reviewForm: any;
+  /**
+   * review_list: List of reviews for the movie.
+   * @type {Array<{ movieId: string, reviewer: string, comment: string, rating: number }>}
+   */
   review_list: any;
+  /**
+   * ratings: Ratings for the movies in the list.
+   * @type {{ [key: string]: number }}
+   */
   ratings: { [key: string]: number } = {};
 
   /**

@@ -3,7 +3,10 @@ import {Component} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 
-
+/**
+ * Component for displaying genres.
+ * It provides a list of genres.
+ */
 @Component({
   selector: 'genre',
   templateUrl: './genres.component.html',
@@ -14,7 +17,13 @@ import { RouterLink } from '@angular/router';
 })
 
 export class GenresComponent {
+  /**
+   * List of available genres.
+   */
   genres_list = ["Action", "Comedy", "Drama", "Horror", "Romance", "Sci-Fi"] ;
+  /**
+   * Data fetched from the web service.
+   */
   data: any = [];
 
 }

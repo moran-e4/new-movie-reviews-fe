@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import {ActivatedRoute, RouterOutlet} from '@angular/router';
 import { DataService } from '../services/data.service';
@@ -8,9 +7,9 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { WebService} from '../services/web.service';
 import { RouterLink } from '@angular/router';
 
-
-
-
+/**
+ * Component for displaying movies by genre.
+ */
 @Component({
   selector: 'genre',
   templateUrl: './genre.component.html',
@@ -26,15 +25,33 @@ import { RouterLink } from '@angular/router';
 
 export class GenreComponent {
 
+  /**
+   * List of movies in the selected genre.
+   */
   genre_movie_list: any;
+  /**
+   * Current page number for pagination.
+   */
   page: number = 1;
+  /**
+   * Ratings for the movies.
+   */
   ratings: { [key: string]: number } = {};
 
+  /**
+   * Constructor to inject necessary services.
+   * @param dataService Service to handle data operations.
+   * @param webService Service to fetch data from the web.
+   * @param route ActivatedRoute to access route parameters.
+   */
   constructor(public dataService: DataService,
               public webService: WebService,
               private route: ActivatedRoute,
   ) {}
 
+  /**
+   * Hook fetches the genre movies and loads their ratings.
+   */
   ngOnInit() {
     if (sessionStorage['page']) {
       this.page = Number(sessionStorage['page']);
@@ -48,6 +65,9 @@ export class GenreComponent {
   });
   }
 
+  /**
+   * Loads ratings for the movies in the genre.
+   */
   loadRatings(): void {
     this.genre_movie_list.forEach((movie: any) => {
       this.webService.getRatings(movie.tconst).subscribe((rating) => {
@@ -56,6 +76,9 @@ export class GenreComponent {
     });
   }
 
+  /**
+   * Navigates to the previous page and fetches the movies for that page.
+   */
   previousPage() {
     if (this.page > 1) {
       this.page = this.page - 1;
@@ -67,6 +90,9 @@ export class GenreComponent {
       })
     }
   }
+  /**
+   * Navigates to the next page and fetches the movies for that page.
+   */
   nextPage() {
     if (this.page < this.dataService.getLastPageNumber()){
       this.page = this.page + 1;
