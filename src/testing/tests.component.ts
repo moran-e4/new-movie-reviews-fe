@@ -22,6 +22,6 @@ export class TestsComponent implements AfterViewInit {
     this.testWebServiceComponent.testGetReviews();
     this.testWebServiceComponent.testPostReview();
     this.testWebServiceComponent.testGetRatings();
-    this.testWebServiceComponent.testGetGenre();
-    this.testGenreComponent.testingTest();}
+    this.testGenreComponent.testGetGenre();
+  }
 }

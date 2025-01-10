@@ -28,12 +28,12 @@ export class WebService {
   }
 
   postReview(id: any, review: any) {
-  let postData = new FormData();
-  postData.append("username", review.username);
-  postData.append("comment", review.comment);
-  postData.append("rating", review.rating);
-  return this.http.post<any>(
-    'http://127.0.0.1:5000/api/v1.0/movies/' + id + '/reviews', postData);
+    let postData = new FormData();
+    postData.append("username", review.username);
+    postData.append("comment", review.comment);
+    postData.append("rating", review.rating);
+    return this.http.post<any>(
+      'http://127.0.0.1:5000/api/v1.0/movies/' + id + '/reviews', postData);
   }
 
   getRatings(tconst: any) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {WebService} from '../app/services/web.service';
 
 
@@ -15,13 +15,15 @@ export class TestGenreComponent {
 
   constructor(private webService: WebService) {}
 
-
-  public testingTest() {
-    this.webService.getMovies(1).subscribe((response) => {
-      if (Array.isArray(response) && response.length == 12)
-        this.test_output.push("Page of movies fetched... PASS");
+  public testGetGenre() {
+    this.webService.getGenre("Comedy").subscribe((response) => {
+      console.log(response);
+      if (response[0].genres == "Comedy")
+        this.test_output.push("Genres fetched... PASS");
       else
-        this.test_output.push("Page of movies fetched... FAIL");
-    });  }
+        this.test_output.push("Genres fetched... FAIL");
+    });
+  }
+
 
 }
